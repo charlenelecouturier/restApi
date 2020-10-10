@@ -13,7 +13,7 @@ class GetUrl extends Command
      *
      * @var string
      */
-    protected $signature = 'command:getTrueUrl {code}' ;
+    protected $signature = 'command:get_true_url {code}' ;
 
     /**
      * The console command description.

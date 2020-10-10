@@ -42,9 +42,10 @@ class ShortLinkController extends Controller
         $input['link'] = $request->link;
         $input['code'] = Str::random(6);
 
+
         ShortLink::create($input);
 
-        return redirect('generate-shorten-link')
+        return redirect('/')
              ->with('success', 'Short link generated!');
     }
 
@@ -64,7 +65,6 @@ class ShortLinkController extends Controller
     public function shortenLink($code)
     {
         $find = ShortLink::where('code', $code)->first();
-
         return redirect($find->link);
     }
 
@@ -89,7 +89,7 @@ class ShortLinkController extends Controller
         $this->validate($request, $rules, $customMessages);
         $id=$request->id;
         ShortLink::where('id', $id)->delete();;
-        return redirect('generate-shorten-link')
+        return redirect('/')
         ->with('success', 'Short link deleted!');
 
     }

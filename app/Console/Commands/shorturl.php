@@ -13,7 +13,7 @@ class Shorturl extends Command
      *
      * @var string
      */
-    protected $signature = 'shorturl:make{link}';
+    protected $signature = 'command:short_url {link}';
 
     /**
      * The console command description.

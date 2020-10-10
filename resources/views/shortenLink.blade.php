@@ -57,7 +57,7 @@
                             <td><a href="{{ route('shorten.link', $row->code) }}" target="_blank">{{ $row->code}}</a></td>
                             <td>{{ $row->link }}</td>
                             <td>
-                                <form method="POST" action="{{  route('delete')}}">
+                                <form method="POST" action="{{ route('delete')}}">
                                     @csrf
                                     <input type="hidden" name="delete">
                                     <input type="hidden" name="id" value="{{$row->id}}">
