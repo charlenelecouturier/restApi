@@ -27,9 +27,20 @@ class ShortLinkController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-           'link' => 'required|url'
-        ]);
+
+
+        $rules = [
+            'link' => 'required|url'
+        ];
+    
+        $customMessages = [
+            'required' => 'The field is required.',
+            'url' => 'The url is not in the right format.'
+
+        ];
+    
+        $this->validate($request, $rules, $customMessages);
+        
 
         $input['link'] = $request->link;
         $input['code'] = Str::random(6);
@@ -39,6 +50,14 @@ class ShortLinkController extends Controller
         return redirect('generate-shorten-link')
              ->with('success', 'Short link generated!');
     }
+
+    public function createAndSend(Request $request)
+    { 
+        $this->store($request);
+        $find = ShortLink::where('link',$request->link)->first();
+        return response()->json(array('short url'=> $find->code));
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -60,21 +79,22 @@ class ShortLinkController extends Controller
     public function delete(Request $request)
     {
   
+        $rules = [
+            'id' => 'required|numeric'
+        ];
+    
+        $customMessages = [
+            'required' => 'The field is required.',
+            'numeric' => 'Something went wrong.'
+
+        ];
+    
+        $this->validate($request, $rules, $customMessages);
         $id=$request->id;
         $link = ShortLink::where('id', $id)->delete();;
         return redirect('generate-shorten-link')
         ->with('success', 'Short link deleted!');
 
-    }
-
-    public function findAction(\Illuminate\Http\Request $request) {
-        if ($request->has('add')) {
-            return $this->store($request);
-        } else if ($request->has('delete')) {
-            return $this-> delete($request);
-        }
-        return redirect('generate-shorten-link')
-        ->with('error', 'No action found!');
     }
 
     

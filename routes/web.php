@@ -21,3 +21,5 @@ Route::get('generate-shorten-link', 'App\Http\Controllers\ShortLinkController@in
 Route::post('store', 'App\Http\Controllers\ShortLinkController@store')->name('store');
 Route::get('{code}', 'App\Http\Controllers\ShortLinkController@shortenLink')->name('shorten.link');
 Route::post('delete', 'App\Http\Controllers\ShortLinkController@delete')->name('delete');
+Route::post('newUrl', 'App\Http\Controllers\ShortLinkController@createAndSend')->name('newUrl');
+
