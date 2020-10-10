@@ -37,7 +37,7 @@ class ShortLinkController extends Controller
         ShortLink::create($input);
 
         return redirect('generate-shorten-link')
-             ->with('success', 'Shorten Link Generated Successfully!');
+             ->with('success', 'Short link generated!');
     }
 
     /**
@@ -51,4 +51,31 @@ class ShortLinkController extends Controller
 
         return redirect($find->link);
     }
+
+    /**
+     * Delete a resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request)
+    {
+  
+        $id=$request->id;
+        $link = ShortLink::where('id', $id)->delete();;
+        return redirect('generate-shorten-link')
+        ->with('success', 'Short link deleted!');
+
+    }
+
+    public function findAction(\Illuminate\Http\Request $request) {
+        if ($request->has('add')) {
+            return $this->store($request);
+        } else if ($request->has('delete')) {
+            return $this-> delete($request);
+        }
+        return redirect('generate-shorten-link')
+        ->with('error', 'No action found!');
+    }
+
+    
 }

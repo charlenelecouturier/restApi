@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('generate-shorten-link', 'App\Http\Controllers\ShortLinkController@index');
-Route::post('generate-shorten-link', 'App\Http\Controllers\ShortLinkController@store')->name('generate.shorten.link.post');
-
+Route::post('store', 'App\Http\Controllers\ShortLinkController@store')->name('store');
 Route::get('{code}', 'App\Http\Controllers\ShortLinkController@shortenLink')->name('shorten.link');
+Route::post('delete', 'App\Http\Controllers\ShortLinkController@delete')->name('delete');

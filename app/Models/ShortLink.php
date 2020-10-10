@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ShortLink extends Model
 {
     use HasFactory;
-    protected $fillable = [
+    protected $fillable = ['id',
         'code', 'link'
     ];
 }
