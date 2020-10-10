@@ -13,7 +13,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Shorturl::class
+        Commands\Shorturl::class,
+        Commands\GetUrl::class
+
     ];
 
     /**

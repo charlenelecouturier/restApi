@@ -27,8 +27,6 @@ class ShortLinkController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $rules = [
             'link' => 'required|url'
         ];
@@ -41,7 +39,6 @@ class ShortLinkController extends Controller
     
         $this->validate($request, $rules, $customMessages);
         
-
         $input['link'] = $request->link;
         $input['code'] = Str::random(6);
 
@@ -91,7 +88,7 @@ class ShortLinkController extends Controller
     
         $this->validate($request, $rules, $customMessages);
         $id=$request->id;
-        $link = ShortLink::where('id', $id)->delete();;
+        ShortLink::where('id', $id)->delete();;
         return redirect('generate-shorten-link')
         ->with('success', 'Short link deleted!');
 

@@ -3,24 +3,24 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Http\Request;
+use App\models\ShortLink;
 
 
-class Shorturl extends Command
+class GetUrl extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'shorturl:make{link}';
+    protected $signature = 'command:getTrueUrl {code}' ;
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Get Url shorten';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -35,14 +35,11 @@ class Shorturl extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return int
      */
     public function handle()
     {
-        $request = Request::create('newUrl', 'POST',['link'=>$this->argument('link')]);
-        $res=app()->make(\Illuminate\Contracts\Http\Kernel::class)->handle($request);
-        $this->info($res->getContent());
+        $find = ShortLink::where('code', $this->argument('code'))->first();
+        echo response()->json(array('true url'=> $find->link))->getContent();
     }
-
-    
 }
