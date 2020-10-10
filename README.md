@@ -5,7 +5,7 @@ Laravel Framework 8.9.0
 ## To use the UI app : 
 <i>run : php artisan serve </i>
 
-<p>features : create and delete shortened url, get an original URL from a shortened url asking the api
+<p>Features : create and delete shortened URLs, get an original URL from a shortened URL asking the API
 
 ## To use the Artisan console : 
 ### 2 commands : <p>
