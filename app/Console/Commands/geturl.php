@@ -5,7 +5,11 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\models\ShortLink;
 
-
+  /**
+     * Command to get an url from a shortened url (JSON format)
+     *
+     * 
+     */
 class GetUrl extends Command
 {
     /**

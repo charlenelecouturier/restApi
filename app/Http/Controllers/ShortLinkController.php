@@ -21,7 +21,7 @@ class ShortLinkController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Store a new resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -49,6 +49,12 @@ class ShortLinkController extends Controller
              ->with('success', 'Short link generated!');
     }
 
+    /**
+     * Creates and return a shortened url from an url given in the request
+     *
+     * @return \Illuminate\Http\Response
+     */
+
     public function createAndSend(Request $request)
     { 
         $this->store($request);
@@ -58,7 +64,7 @@ class ShortLinkController extends Controller
 
 
     /**
-     * Display a listing of the resource.
+     * Display the original url from a shortened url
      *
      * @return \Illuminate\Http\Response
      */

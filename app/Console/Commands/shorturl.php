@@ -5,7 +5,11 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 
-
+  /**
+     * Command to create and get a shortened url from an url (JSON format)
+     *
+     * 
+     */
 class Shorturl extends Command
 {
     /**
